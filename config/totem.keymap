@@ -68,9 +68,9 @@
             bindings = <&kp>, <&kp>;
         };
 
-        hmlr: hmlr {
+        hmr: hmr {
             compatible = "zmk,behavior-hold-tap";
-            label = "HMLR";
+            label = "HMR";
             #binding-cells = <2>;
             tapping-term-ms = <280>;
             quick-tap-ms = <175>;
@@ -80,6 +80,13 @@
             bindings = <&kp>, <&kp>;
 
             hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 25 32 33 34>;
+        };
+
+        num_lay: num_lay {
+            compatible = "zmk,behavior-tap-dance";
+            label = "NUM_LAY";
+            #binding-cells = <0>;
+            bindings = <&sl 1>, <&to 1>;
         };
     };
 
@@ -105,10 +112,10 @@
             //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 
             bindings = <
-       &kp Q  &kp W  &kp E                &kp R              &kp T        &kp Y    &kp U                &kp I      &kp O    &kp P
-       &kp A  &kp S  &hml LEFT_CONTROL D  &hml LEFT_SHIFT F  &kp G        &kp H    &hmlr RIGHT_SHIFT J  &kp K      &kp L    &kp SEMICOLON
-&kp Z  &kp Z  &kp X  &kp C                &kp V              &kp B        &kp N    &kp M                &kp COMMA  &kp DOT  &kp FSLH       &kp BSLH
-                     &kp DEL              &kp TAB            &kp SPACE    &kp RET  &sl 1                &kp BSPC
+       &kp Q            &kp W            &kp E                &kp R              &kp T        &kp Y    &kp U               &kp I      &kp O    &kp P
+       &hmr LEFT_GUI A  &hml LEFT_ALT S  &hml LEFT_CONTROL D  &hml LEFT_SHIFT F  &kp G        &kp H    &hmr RIGHT_SHIFT J  &kp K      &kp L    &kp SEMICOLON
+&kp Z  &kp Z            &kp X            &kp C                &kp V              &kp B        &kp N    &kp M               &kp COMMA  &kp DOT  &kp FSLH       &kp BSLH
+                                         &kp DEL              &kp TAB            &kp SPACE    &kp RET  &num_lay            &kp BSPC
             >;
         };
 
@@ -120,10 +127,10 @@
 
         num {
             bindings = <
-        &kp N1  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
-        &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &to 0
-                        &trans  &trans  &trans    &trans  &trans  &trans
+        &kp N1  &trans  &trans  &trans    &trans    &trans  &trans  &trans  &trans  &trans
+        &trans  &trans  &trans  &num_lay  &trans    &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans    &trans    &trans  &trans  &trans  &trans  &trans  &to 0
+                        &trans  &trans    &trans    &trans  &trans  &trans
             >;
         };
     };
